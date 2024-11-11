@@ -15,8 +15,18 @@ type MqttConfig struct {
 	Topics    []MqttConfigTopic `mapstructure:"topics"`
 }
 
+type OverkizConfig struct {
+	BaseUrl            string `mapstructure:"base_url"`
+	UserName           string `mapstructure:"username"`
+	Password           string `mapstructure:"password"`
+	OAuthLoginEndpoint string `mapstructure:"oauth_login_endpoint"`
+	OAuthClientId      string `mapstructure:"oauth_client_id"`
+	OAuthClientSecret  string `mapstructure:"oauth_client_secret"`
+}
+
 type Config struct {
-	Mqtt MqttConfig `mapstructure:"mqtt"`
+	Mqtt    MqttConfig    `mapstructure:"mqtt"`
+	Overkiz OverkizConfig `mapstructure:"overkiz"`
 }
 
 func New(configFilePath string) (*Config, error) {

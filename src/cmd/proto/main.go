@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"gomodo/internal/config"
-	"gomodo/pkg/aqara"
-	"gomodo/pkg/bridge"
-	"gomodo/pkg/linkee"
 	"log/slog"
 	"time"
+
+	"github.com/ghtix/gomodo/internal/config"
+	"github.com/ghtix/gomodo/pkg/aqara"
+	"github.com/ghtix/gomodo/pkg/bridge"
+	"github.com/ghtix/gomodo/pkg/linkee"
 
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 )
