@@ -23,6 +23,7 @@ func (h *Handler) ListRollers(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err})
 		ctx.Abort()
+		return
 	}
 	ctx.JSON(http.StatusOK, rollers)
 }
@@ -43,6 +44,7 @@ func (h *Handler) GetRollerByOID(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err})
 		ctx.Abort()
+		return
 	}
 	if device == nil {
 		ctx.JSON(http.StatusNotFound, gin.H{"error": "not found"})
@@ -67,10 +69,12 @@ func (h *Handler) OpenRollerByOID(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err})
 		ctx.Abort()
+		return
 	}
 	if device == nil {
 		ctx.JSON(http.StatusNotFound, gin.H{"error": "not found"})
 		ctx.Abort()
+		return
 	}
 
 	command := overkiz.NewSingleCommand(device.Label, device.DeviceURL, "open", nil)
@@ -79,6 +83,7 @@ func (h *Handler) OpenRollerByOID(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err})
 		ctx.Abort()
+		return
 	}
 
 	data, err := io.ReadAll(resp.Body)
@@ -107,10 +112,12 @@ func (h *Handler) CloseRollerByOID(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err})
 		ctx.Abort()
+		return
 	}
 	if device == nil {
 		ctx.JSON(http.StatusNotFound, gin.H{"error": "not found"})
 		ctx.Abort()
+		return
 	}
 
 	command := overkiz.NewSingleCommand(device.Label, device.DeviceURL, "close", nil)
@@ -119,6 +126,7 @@ func (h *Handler) CloseRollerByOID(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err})
 		ctx.Abort()
+		return
 	}
 
 	data, err := io.ReadAll(resp.Body)
