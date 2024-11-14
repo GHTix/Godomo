@@ -1,0 +1,59 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/v1/sensor": {
+            "get": {
+                "description": "get the last data of the sensor",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sensor"
+                ],
+                "summary": "get the last data of the sensor",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/aqara.Aqara"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "aqara.Aqara": {
+            "type": "object",
+            "properties": {
+                "battery": {
+                    "type": "integer"
+                },
+                "humidity": {
+                    "type": "number"
+                },
+                "linkquality": {
+                    "type": "integer"
+                },
+                "power_outage_count": {
+                    "type": "integer"
+                },
+                "pressure": {
+                    "type": "integer"
+                },
+                "temperature": {
+                    "type": "number"
+                },
+                "voltage": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

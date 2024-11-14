@@ -7,7 +7,7 @@ type Aqara struct {
 	Humidity         float64 `json:"humidity"`
 	Linkquality      int     `json:"linkquality"`
 	PowerOutageCount int     `json:"power_outage_count"`
-	Pressure         int     `json:"pressure"`
+	Pressure         float64 `json:"pressure"`
 	Temperature      float64 `json:"temperature"`
 	Voltage          int     `json:"voltage"`
 }

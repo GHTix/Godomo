@@ -1,0 +1,37 @@
+definitions:
+  aqara.Aqara:
+    properties:
+      battery:
+        type: integer
+      humidity:
+        type: number
+      linkquality:
+        type: integer
+      power_outage_count:
+        type: integer
+      pressure:
+        type: integer
+      temperature:
+        type: number
+      voltage:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/sensor:
+    get:
+      consumes:
+      - application/json
+      description: get the last data of the sensor
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/aqara.Aqara'
+      summary: get the last data of the sensor
+      tags:
+      - Sensor
+swagger: "2.0"
