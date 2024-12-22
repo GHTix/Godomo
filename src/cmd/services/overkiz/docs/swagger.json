@@ -1,0 +1,296 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/v1/heatingsystems": {
+            "get": {
+                "description": "lists all HeatingSystem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "HeatingSystem"
+                ],
+                "summary": "lists all HeatingSystem",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/overkiz.Device"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/rollers": {
+            "get": {
+                "description": "lists all RollerShutter",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roller"
+                ],
+                "summary": "lists all RollerShutter",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/overkiz.Device"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/rollers/{oid}": {
+            "get": {
+                "description": "returns device filterd by oid",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roller"
+                ],
+                "summary": "returns device filterd by oid",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "oid of the device",
+                        "name": "oid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/overkiz.Device"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/rollers/{oid}/close": {
+            "post": {
+                "description": "closes the roller",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roller"
+                ],
+                "summary": "closes the roller",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "oid of the device",
+                        "name": "oid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/overkiz.Device"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/rollers/{oid}/open": {
+            "post": {
+                "description": "opens the roller",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roller"
+                ],
+                "summary": "opens the roller",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "oid of the device",
+                        "name": "oid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/overkiz.Device"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "overkiz.Device": {
+            "type": "object",
+            "properties": {
+                "attributes": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "integer"
+                            },
+                            "value": {}
+                        }
+                    }
+                },
+                "available": {
+                    "type": "boolean"
+                },
+                "controllableName": {
+                    "type": "string"
+                },
+                "creationTime": {
+                    "type": "integer"
+                },
+                "definition": {
+                    "type": "object",
+                    "properties": {
+                        "commands": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "commandName": {
+                                        "type": "string"
+                                    },
+                                    "nparams": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "dataProperties": {
+                            "type": "array",
+                            "items": {}
+                        },
+                        "qualifiedName": {
+                            "type": "string"
+                        },
+                        "states": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "eventBased": {
+                                        "type": "boolean"
+                                    },
+                                    "qualifiedName": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "values": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "type": {
+                            "type": "string"
+                        },
+                        "uiClass": {
+                            "type": "string"
+                        },
+                        "uiProfiles": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "widgetName": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "deviceURL": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "lastUpdateTime": {
+                    "type": "integer"
+                },
+                "oid": {
+                    "type": "string"
+                },
+                "placeOID": {
+                    "type": "string"
+                },
+                "shortcut": {
+                    "type": "boolean"
+                },
+                "states": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "integer"
+                            },
+                            "value": {}
+                        }
+                    }
+                },
+                "type": {
+                    "type": "integer"
+                },
+                "uiClass": {
+                    "type": "string"
+                },
+                "widget": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

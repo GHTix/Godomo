@@ -1,0 +1,193 @@
+definitions:
+  overkiz.Device:
+    properties:
+      attributes:
+        items:
+          properties:
+            name:
+              type: string
+            type:
+              type: integer
+            value: {}
+          type: object
+        type: array
+      available:
+        type: boolean
+      controllableName:
+        type: string
+      creationTime:
+        type: integer
+      definition:
+        properties:
+          commands:
+            items:
+              properties:
+                commandName:
+                  type: string
+                nparams:
+                  type: integer
+              type: object
+            type: array
+          dataProperties:
+            items: {}
+            type: array
+          qualifiedName:
+            type: string
+          states:
+            items:
+              properties:
+                eventBased:
+                  type: boolean
+                qualifiedName:
+                  type: string
+                type:
+                  type: string
+                values:
+                  items:
+                    type: string
+                  type: array
+              type: object
+            type: array
+          type:
+            type: string
+          uiClass:
+            type: string
+          uiProfiles:
+            items:
+              type: string
+            type: array
+          widgetName:
+            type: string
+        type: object
+      deviceURL:
+        type: string
+      enabled:
+        type: boolean
+      label:
+        type: string
+      lastUpdateTime:
+        type: integer
+      oid:
+        type: string
+      placeOID:
+        type: string
+      shortcut:
+        type: boolean
+      states:
+        items:
+          properties:
+            name:
+              type: string
+            type:
+              type: integer
+            value: {}
+          type: object
+        type: array
+      type:
+        type: integer
+      uiClass:
+        type: string
+      widget:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/heatingsystems:
+    get:
+      consumes:
+      - application/json
+      description: lists all HeatingSystem
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/overkiz.Device'
+            type: array
+      summary: lists all HeatingSystem
+      tags:
+      - HeatingSystem
+  /api/v1/rollers:
+    get:
+      consumes:
+      - application/json
+      description: lists all RollerShutter
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/overkiz.Device'
+            type: array
+      summary: lists all RollerShutter
+      tags:
+      - Roller
+  /api/v1/rollers/{oid}:
+    get:
+      consumes:
+      - application/json
+      description: returns device filterd by oid
+      parameters:
+      - description: oid of the device
+        in: path
+        name: oid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/overkiz.Device'
+      summary: returns device filterd by oid
+      tags:
+      - Roller
+  /api/v1/rollers/{oid}/close:
+    post:
+      consumes:
+      - application/json
+      description: closes the roller
+      parameters:
+      - description: oid of the device
+        in: path
+        name: oid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/overkiz.Device'
+      summary: closes the roller
+      tags:
+      - Roller
+  /api/v1/rollers/{oid}/open:
+    post:
+      consumes:
+      - application/json
+      description: opens the roller
+      parameters:
+      - description: oid of the device
+        in: path
+        name: oid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/overkiz.Device'
+      summary: opens the roller
+      tags:
+      - Roller
+swagger: "2.0"
