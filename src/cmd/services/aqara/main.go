@@ -14,7 +14,7 @@ import (
 
 func main() {
 
-	config, err := config.New(os.Getenv("AQARA_CONFIG_PATH"))
+	config, err := config.New(os.Getenv("GODOMO_AQARA_CONFIG_PATH"))
 	if err != nil {
 		slog.Error("main", "error loading config", err.Error())
 	}

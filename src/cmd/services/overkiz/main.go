@@ -2,6 +2,7 @@ package main
 
 import (
 	"log/slog"
+	"os"
 
 	"github.com/ghtix/gomodo/cmd/services/overkiz/docs"
 	"github.com/ghtix/gomodo/cmd/services/overkiz/handler"
@@ -15,7 +16,7 @@ import (
 
 func main() {
 
-	config, err := config.New("../private/config.yml")
+	config, err := config.New(os.Getenv("GODOMO_OVERKIZ_CONFIG_PATH"))
 	if err != nil {
 		slog.Error("main", "error loading config", err.Error())
 	}
@@ -54,6 +55,6 @@ func main() {
 	docs.SwaggerInfo.BasePath = "/"
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 
-	router.Run(":8888")
+	router.Run(":8080")
 
 }
