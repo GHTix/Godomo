@@ -1,2 +1,2 @@
-export AQARA_CONFIG_PATH=/home/tix/git/Godomo/private/config.yml
+export GODOMO_AQARA_CONFIG_PATH=/home/tix/git/Godomo/private/config.yml
 go run  ./cmd/services/aqara/...
