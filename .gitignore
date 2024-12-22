@@ -26,3 +26,4 @@ go.work.sum
 
 # Private
 private/
+src/release/
