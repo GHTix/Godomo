@@ -1,0 +1,24 @@
+services:
+
+  aqara:
+    environment:
+      - GODOMO_AQARA_CONFIG_PATH=/etc/godomo/aqara/config.yml
+    image: aqara:0.0.1
+    ports:
+      - 8089:8080
+    volumes:
+      - /home/tix/godomo/config.yml:/etc/godomo/aqara/config.yml:ro
+    command: /aqara
+
+  overkiz:
+    environment:
+      - GODOMO_OVERKIZ_CONFIG_PATH=/etc/godomo/aqara/config.yml
+    image: overkiz:0.0.1
+    ports:
+      - 8088:8080
+    volumes:
+      - /home/tix/godomo/config.yml:/etc/godomo/aqara/config.yml:ro
+    command: /overkiz
+
+
+
