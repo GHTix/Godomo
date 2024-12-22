@@ -7,10 +7,10 @@ import (
 	"github.com/ghtix/gomodo/cmd/services/overkiz/handler"
 	"github.com/ghtix/gomodo/internal/config"
 	"github.com/ghtix/gomodo/internal/rest"
-	swaggerfiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
 
 	"github.com/gin-gonic/gin"
+	swaggerfiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func main() {
@@ -44,7 +44,11 @@ func main() {
 		v1.GET("rollers/:oid", h.GetRollerByOID)
 		v1.POST("rollers/:oid/open", h.OpenRollerByOID)
 		v1.POST("rollers/:oid/close", h.CloseRollerByOID)
+
+		v1.GET("heatingsystems", h.ListHeatingSystems)
 	}
+
+	router.GET("test", h.Test)
 
 	// Swagger
 	docs.SwaggerInfo.BasePath = "/"

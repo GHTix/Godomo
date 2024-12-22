@@ -93,6 +93,23 @@ definitions:
 info:
   contact: {}
 paths:
+  /api/v1/heatingsystems:
+    get:
+      consumes:
+      - application/json
+      description: lists all HeatingSystem
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/overkiz.Device'
+            type: array
+      summary: lists all HeatingSystem
+      tags:
+      - HeatingSystem
   /api/v1/rollers:
     get:
       consumes:

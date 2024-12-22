@@ -85,6 +85,21 @@ func (s *Setup) DevicesFilterByClass(class string) (*[]Device, error) {
 	return &devices, nil
 }
 
+func (s *Setup) DevicesFilterByClassAndPlace(class string, placeOid string) (*[]Device, error) {
+	var devices []Device
+
+	for _, device := range s.Devices {
+		if device.UIClass == class && device.PlaceOID == placeOid {
+			deviceCopy, err := device.Clone()
+			if err != nil {
+				return nil, fmt.Errorf("%w", err)
+			}
+			devices = append(devices, *deviceCopy)
+		}
+	}
+	return &devices, nil
+}
+
 func (s *Setup) DeviceFilterByOid(oid string) (*Device, error) {
 	for _, device := range s.Devices {
 		if device.Oid == oid {

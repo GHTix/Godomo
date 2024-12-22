@@ -89,11 +89,10 @@ func (h *Handler) OpenRollerByOID(ctx *gin.Context) {
 	data, err := io.ReadAll(resp.Body)
 	if err != nil {
 		slog.Error("goverkiz-cli", "error reading response exec current", err.Error())
-	} else {
-		println(string(data))
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err})
+		ctx.Abort()
 	}
-
-	ctx.JSON(http.StatusOK, device)
+	ctx.JSON(http.StatusOK, data)
 }
 
 // CloseRollerByOID closes the roller
@@ -132,9 +131,9 @@ func (h *Handler) CloseRollerByOID(ctx *gin.Context) {
 	data, err := io.ReadAll(resp.Body)
 	if err != nil {
 		slog.Error("goverkiz-cli", "error reading response exec current", err.Error())
-	} else {
-		println(string(data))
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err})
+		ctx.Abort()
 	}
 
-	ctx.JSON(http.StatusOK, device)
+	ctx.JSON(http.StatusOK, data)
 }

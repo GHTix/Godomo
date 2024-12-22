@@ -15,6 +15,32 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/api/v1/heatingsystems": {
+            "get": {
+                "description": "lists all HeatingSystem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "HeatingSystem"
+                ],
+                "summary": "lists all HeatingSystem",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/overkiz.Device"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/rollers": {
             "get": {
                 "description": "lists all RollerShutter",

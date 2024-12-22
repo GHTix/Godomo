@@ -10,15 +10,69 @@ definitions:
       power_outage_count:
         type: integer
       pressure:
-        type: integer
+        type: number
       temperature:
         type: number
       voltage:
         type: integer
     type: object
+  common.Sensor:
+    properties:
+      name:
+        type: string
+      unit:
+        type: string
+      value:
+        type: number
+    type: object
 info:
   contact: {}
 paths:
+  /api/v1/battery:
+    get:
+      consumes:
+      - application/json
+      description: get the last battery mesure
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.Sensor'
+      summary: get the last battery mesure
+      tags:
+      - Sensor
+  /api/v1/humidity:
+    get:
+      consumes:
+      - application/json
+      description: get the last humidity mesure
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.Sensor'
+      summary: get the last humidity mesure
+      tags:
+      - Sensor
+  /api/v1/pressure:
+    get:
+      consumes:
+      - application/json
+      description: get the last pressure mesure
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.Sensor'
+      summary: get the last pressure mesure
+      tags:
+      - Sensor
   /api/v1/sensor:
     get:
       consumes:
@@ -32,6 +86,21 @@ paths:
           schema:
             $ref: '#/definitions/aqara.Aqara'
       summary: get the last data of the sensor
+      tags:
+      - Sensor
+  /api/v1/temperature:
+    get:
+      consumes:
+      - application/json
+      description: get the last temperature mesure
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.Sensor'
+      summary: get the last temperature mesure
       tags:
       - Sensor
 swagger: "2.0"

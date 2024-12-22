@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Go + htmx app </title>
+      <script src="https://unpkg.com/htmx.org@2.0.0" integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" crossorigin="anonymous"></script>
+      <script src="https://cdn.tailwindcss.com"></script>
+   </head>
+   <body class="text-center flex flex-col w-full gap-6 mt-10">
+      <table id="user-list" class="w-1/2 mx-auto mt-4 border border-gray-300">
+         <thead>
+            <tr class="border border-gray-300">
+               <th class="px-4 py-2">Name</th>
+               <th class="px-4 py-2">OID</th>
+               <th class="px-4 py-2">Actions</th>
+            </tr>
+         </thead>
+         <tbody>
+            {{ range .rollers }}
+            <tr class="border border-gray-300">
+               <td class="px-4 py-2">{{ .Label }}</td>
+               <td class="px-4 py-2">{{ .Oid }}</td>
+               <td class="px-4 py-2">
+                  <button hx-post="/api/v1/rollers/{{ .Oid }}/open" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Open</button>
+                  <button hx-post="/api/v1/rollers/{{ .Oid }}/close" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Close</button>
+               </td>
+            </tr>
+            {{ end }}
+         </tbody>
+      </table>
+   </body>
+</html>
