@@ -12,7 +12,7 @@ COPY . .
 
 RUN go mod download
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o release/ ./cmd/services/overkiz/...
+RUN CGO_ENABLED=0 GOOS=linux go build -o release/ ./cmd/control/...
 
 ##
 ## Run the tests in the container
@@ -30,10 +30,10 @@ FROM gcr.io/distroless/static-debian12
 
 WORKDIR /
 
-COPY --from=build app/release/overkiz /overkiz
+COPY --from=build app/release/control /control
 
-EXPOSE 8082
+EXPOSE 8080
 
 USER nonroot:nonroot
 
-ENTRYPOINT ["/overkiz"]
+ENTRYPOINT ["/control"]
