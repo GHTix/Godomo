@@ -1,14 +1,21 @@
 .PHONY: aqara
 
+aqara_version = 0.0.3
+overkiz_version = 0.0.3
+
+
+all: aqara overkiz
+
 aqara:
-	 buildah bud -f ./build/aqara/Dockerfile -t aqara:0.0.1 --log-level=info
-	 podman image save aqara:0.0.1 -o release/aqara_0.0.1.img
-	 scp release/aqara_0.0.1.img tix@192.168.1.30:/home/tix/images
-	 //podman image load --input aqara_0.0.1.img
+	buildah bud -f ./build/aqara/Dockerfile -t aqara:${aqara_version} --log-level=info
+	rm -f release/overkiz_${aqara_version}.img
+	podman image save aqara:${aqara_version} -o release/aqara_${aqara_version}.img
+	scp release/aqara_${aqara_version}.img tix@192.168.1.30:/home/tix/images
+
 
 overkiz:
-	 buildah bud -f ./build/overkiz/Dockerfile -t overkiz:0.0.1 --log-level=info
-	 rm release/overkiz_0.0.1.img
-	 podman image save overkiz:0.0.1 -o release/overkiz_0.0.1.img
-	 scp release/overkiz_0.0.1.img tix@192.168.1.30:/home/tix/images
-	 //podman image load --input overkiz_0.0.1.img
+	buildah bud -f ./build/overkiz/Dockerfile -t overkiz:${overkiz_version} --log-level=info
+	rm -f release/overkiz_${overkiz_version}.img
+	podman image save overkiz:${overkiz_version} -o release/overkiz_${overkiz_version}.img
+	scp release/overkiz_${overkiz_version}.img tix@192.168.1.30:/home/tix/images
+
