@@ -5,7 +5,7 @@ import (
 	"log/slog"
 	"sync"
 
-	"github.com/ghtix/gomodo/internal/config"
+	aqaraConfig "github.com/ghtix/gomodo/cmd/services/aqara/config"
 	mqttClient "github.com/ghtix/gomodo/internal/mqtt"
 	"github.com/ghtix/gomodo/pkg/aqara"
 
@@ -13,7 +13,7 @@ import (
 )
 
 type Handler struct {
-	Config config.Config
+	Config aqaraConfig.AqaraServiceConfig
 	data   *aqara.Aqara
 	mutex  sync.RWMutex
 }
@@ -52,7 +52,7 @@ func (h *Handler) MessageCallback(_ mqtt.Client, msg mqtt.Message) {
 	}
 }
 
-func New(config config.Config) *Handler {
+func New(config aqaraConfig.AqaraServiceConfig) *Handler {
 	handler := Handler{
 		Config: config,
 	}
