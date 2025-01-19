@@ -1,0 +1,93 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/v1/apparentpower": {
+            "get": {
+                "description": "get the apparent power",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Lixee"
+                ],
+                "summary": "get the apparent power",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/common.Sensor"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/availablepower": {
+            "get": {
+                "description": "get the vailable power",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Lixee"
+                ],
+                "summary": "get the vailable power",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/common.Sensor"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/currentsummdeliverd": {
+            "get": {
+                "description": "get the apparent power",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Lixee"
+                ],
+                "summary": "get the apparent power",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/common.Sensor"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "common.Sensor": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "unit": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}
