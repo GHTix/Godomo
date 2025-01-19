@@ -1,0 +1,59 @@
+definitions:
+  common.Sensor:
+    properties:
+      name:
+        type: string
+      unit:
+        type: string
+      value:
+        type: number
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/apparentpower:
+    get:
+      consumes:
+      - application/json
+      description: get the apparent power
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.Sensor'
+      summary: get the apparent power
+      tags:
+      - Lixee
+  /api/v1/availablepower:
+    get:
+      consumes:
+      - application/json
+      description: get the vailable power
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.Sensor'
+      summary: get the vailable power
+      tags:
+      - Lixee
+  /api/v1/currentsummdeliverd:
+    get:
+      consumes:
+      - application/json
+      description: get the apparent power
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.Sensor'
+      summary: get the apparent power
+      tags:
+      - Lixee
+swagger: "2.0"
