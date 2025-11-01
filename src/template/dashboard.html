@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Dashboard</title>
+      <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+      <script src="https://unpkg.com/htmx.org/dist/ext/sse.js"></script>
+      <script src="https://cdn.tailwindcss.com"></script>
+   </head>
+   <body class="text-center flex flex-col w-full gap-6 mt-10">
+      <p><b>Dashboard</b></p>
+      <div hx-ext="sse" sse-connect="/sse/v1/events" sse-swap="message">
+         Contents of this box will be updated in real time with every SSE message received.
+     </div>
+   </body>
+</html>

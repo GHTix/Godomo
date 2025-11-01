@@ -2,6 +2,8 @@ package linkee
 
 import (
 	"encoding/json"
+	"fmt"
+	"strings"
 )
 
 type LinkyLixee struct {
@@ -88,4 +90,22 @@ func New(data []byte) (*LinkyLixee, error) {
 		return nil, err
 	}
 	return &newValue, nil
+}
+
+func (data LinkyLixee) Serailize() string {
+	return fmt.Sprintf("CurrentSummDelivered: %f\nRmsCurrent:  %d\n", data.CurrentSummDelivered, data.RmsCurrent)
+}
+
+func (data LinkyLixee) PromMetrics() string {
+	var sb strings.Builder
+
+	sb.WriteString("#HELP linkee_current_summ_deliverd\n")
+	sb.WriteString("#TYPE linkee_current_summ_deliverd counter\n")
+	sb.WriteString(fmt.Sprintf("linkee_current_summ_deliverd %e\n", data.CurrentSummDelivered))
+
+	sb.WriteString("#HELP linkee_rms_current\n")
+	sb.WriteString("#TYPE linkee_rms_current gauge\n")
+	sb.WriteString(fmt.Sprintf("linkee_rms_current %d\n", data.RmsCurrent))
+
+	return sb.String()
 }

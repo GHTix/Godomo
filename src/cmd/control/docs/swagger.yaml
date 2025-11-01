@@ -1,4 +1,27 @@
+definitions:
+  handler.NotifyMessage:
+    properties:
+      message:
+        type: string
+    type: object
 info:
   contact: {}
-paths: {}
+paths:
+  /api/v1/notify:
+    post:
+      consumes:
+      - application/json
+      description: Notify
+      parameters:
+      - description: The message
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/handler.NotifyMessage'
+      responses:
+        "202":
+          description: Accepted
+        "400":
+          description: Bad Request
 swagger: "2.0"

@@ -33,7 +33,7 @@ WORKDIR /
 
 COPY --from=build app/release/aqara /aqara
 
-EXPOSE 8080
+EXPOSE 8081
 
 USER nonroot:nonroot
 

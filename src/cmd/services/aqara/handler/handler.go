@@ -27,7 +27,6 @@ func (h *Handler) SetData(data []byte) error {
 		return fmt.Errorf("handler SetData: %w", err)
 	}
 	return nil
-
 }
 
 func (h *Handler) GetData() (*aqara.Aqara, error) {

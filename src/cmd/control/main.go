@@ -32,7 +32,7 @@ func main() {
 
 	router := gin.Default()
 
-	SetupRouter(router)
+	SetupRouter(router, *config)
 
 	slog.Info(config.Service.ListeningAddress)
 
